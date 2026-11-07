@@ -5,6 +5,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         music.play(music.melodyPlayable(music.sonar), music.PlaybackMode.InBackground)
     }
 })
+let enemySprite: Sprite = null
 let projectile: Sprite = null
 let lastCast = 0
 let boat: Sprite = null
@@ -21,3 +22,8 @@ assets.image`f4`,
 assets.image`shark`
 ]
 lastCast = -1000
+game.onUpdateInterval(500, function () {
+    enemySprite = sprites.create(enemyList[randint(0, 5)], SpriteKind.Enemy)
+    enemySprite.setPosition(162, randint(35, 115))
+    enemySprite.setVelocity(randint(-40, -60), 0)
+})
